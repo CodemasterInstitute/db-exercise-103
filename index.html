@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Exercise 102</title>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+
+        <main>
+
+            <h2>BEGINNER exercise</h2>
+
+            <p>
+                Using the HTML5 validation attributes describe at the link below, implement the following validation rules for this form:<br />
+                <a href="http://www.w3schools.com/html/html_form_attributes.asp" target="_blank">http://www.w3schools.com/html/html_form_attributes.asp</a>
+            </p>
+
+            <ul>
+                <li>
+                    All inputs must have a placeholder value
+                </li>
+                <li>
+                    All fields marked with an asterix must be required
+                </li>
+                <li>
+                    Currency values must increment/decrement by 1c be between 0 and 199.99
+                </li>
+                <li>
+                    The 'Title' must be between 3 and 200 characters, whereas all other text fields must be between 3 and 100 characters
+                </li>
+                <li>
+                    Email addresses must be a valid date format
+                </li>
+                <li>
+                    Dates must be a valid date format
+                </li>
+            </ul>
+
+            <fieldset>
+                
+                <legend>Book form</legend>
+
+                <form name="intermediateForm" onsubmit="return validateForm();" action="index.html" method="GET">
+                    
+                    <div class="field">
+                        <label for="title">Title</label>
+                        <span class="mandatory">*</span>
+                        <input type="text" name="title" id="title"/>
+                    </div>
+                    
+                    <div class="field">
+                        <label for="description">Description</label>
+                        <textarea type="text" name="description" id="description"></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label for="price">Price (dollars)</label>
+                        <span class="mandatory">*</span>
+                        <input type="number" name="price" id="price" />
+                    </div>
+
+                    <div class="field">
+                        <label for="isbn">ISBN</label>
+                        <span class="mandatory">*</span>
+                        <input type="number" name="isbn" id="isbn" />
+                    </div>
+
+                    <div class="field">
+                        <label for="datePublished">Date of publication (dd/mm/yyyy)</label>
+                        <span class="mandatory">*</span>
+                        <input type="text" name="datePublished" id="datePublished" />
+                    </div>
+
+                    <div class="field">
+                        <label for="genre">Genre</label>
+                        <span class="mandatory">*</span>
+                        <input name="genre" id="genre" list="genres">
+                        <datalist id="genres">
+                            <option>Comedy</option>
+                            <option>Horror</option>
+                            <option>Action</option>
+                            <option>Romance</option>
+                            <option>Sci Fi</option>
+                            <option>Biography</option>
+                            <option>Drama</option>
+                        </datalist>
+                    </div>
+
+                    <div class="field">
+                        <label for="authorName">Author name</label>
+                        <span class="mandatory">*</span>
+                        <input type="text" name="authorName" id="authorName" />
+                    </div>
+
+                    <div class="field">
+                        <label for="authorEmail">Author email</label>
+                        <span class="mandatory">*</span>
+                        <input type="text" name="authorEmail" id="authorEmail" />
+                    </div>
+
+                    <input type="submit" value="Submit!"></input>
+
+                </form>
+
+            </fieldset>
+
+            <h2>INTERMEDIATE exercise</h2>
+
+            <p>
+               Apply the attribute 'novalidate' (<a href="http://www.w3schools.com/tags/att_form_novalidate.asp" target="_blank">http://www.w3schools.com/tags/att_form_novalidate.asp</a>) to the form. This will disable the default HTML5 validation attributes.
+            </p>
+            <p>
+                Now, implement the exact same validation rules using vanilla JavaScript inside the script.js file (you can make use of the 'validateForm' method).
+            </p>
+            <p>
+                In this exercise you will need to research how to implement JavaScript Regular Expression (RegEx) validation. A general overview of RegEx is provided on wikipedia (<a href="https://en.wikipedia.org/wiki/Regular_expression">https://en.wikipedia.org/wiki/Regular_expression</a>). To REALLY understand what they are you'll need to replicate someone elses implementation - and adjust it for your own needs. For this I suggest you Google the phrase "javascript regex validation example". HINT: regular expression is required for the 'Date of publication' and 'Email' fields.
+            </p>
+
+            <p>
+               Output any errors or feedback in an alert window.
+            </p>
+
+            <h2>EXPERT exercise</h2>
+
+            <p>
+                On error highlight the invalid fields and provide an inline error message immediately below the invalid field.
+            </p>
+
+            <p>
+                Done that? 
+            </p>
+
+
+        </main>
+		
+        <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="scripts.js"></script>
+	</body>
+</html>
