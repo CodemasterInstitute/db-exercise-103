@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Exercise 102</title>
+    <head>
+        <title>Exercise 102</title>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="styles.css">
-	</head>
-	<body>
+    </head>
+    <body>
 
         <main>
 
@@ -41,12 +41,12 @@
                 
                 <legend>Book form</legend>
 
-                <form name="intermediateForm" onsubmit="return validateForm();" action="index.html" method="GET">
+                <form name="intermediateForm" onsubmit="return validateForm();" action="index.html" method="GET" novalidate>
                     
                     <div class="field">
                         <label for="title">Title</label>
                         <span class="mandatory">*</span>
-                        <input type="text" name="title" id="title"/>
+                        <input type="text" name="title" id="title" required minlength="3" maxlength="200" />
                     </div>
                     
                     <div class="field">
@@ -57,25 +57,25 @@
                     <div class="field">
                         <label for="price">Price (dollars)</label>
                         <span class="mandatory">*</span>
-                        <input type="number" name="price" id="price" />
+                        <input type="number" name="price" id="price" step="0.01" required min="0.00" max="199.99" />
                     </div>
 
                     <div class="field">
                         <label for="isbn">ISBN</label>
                         <span class="mandatory">*</span>
-                        <input type="number" name="isbn" id="isbn" />
+                        <input type="number" name="isbn" id="isbn" required />
                     </div>
 
                     <div class="field">
                         <label for="datePublished">Date of publication (dd/mm/yyyy)</label>
                         <span class="mandatory">*</span>
-                        <input type="text" name="datePublished" id="datePublished" />
+                        <input type="text" name="datePublished" id="datePublished" pattern="\d{1,2}/\d{1,2}/\d{4}" required />
                     </div>
 
                     <div class="field">
                         <label for="genre">Genre</label>
                         <span class="mandatory">*</span>
-                        <input name="genre" id="genre" list="genres">
+                        <input name="genre" id="genre" list="genres" required>
                         <datalist id="genres">
                             <option>Comedy</option>
                             <option>Horror</option>
@@ -90,13 +90,13 @@
                     <div class="field">
                         <label for="authorName">Author name</label>
                         <span class="mandatory">*</span>
-                        <input type="text" name="authorName" id="authorName" />
+                        <input type="text" name="authorName" id="authorName" required minlength="3" maxlength="100" />
                     </div>
 
                     <div class="field">
                         <label for="authorEmail">Author email</label>
                         <span class="mandatory">*</span>
-                        <input type="text" name="authorEmail" id="authorEmail" />
+                        <input type="email" name="authorEmail" id="authorEmail" required minlength="3" maxlength="100" />
                     </div>
 
                     <input type="submit" value="Submit!"></input>
@@ -133,8 +133,8 @@
 
 
         </main>
-		
+        
         <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="scripts.js"></script>
-	</body>
+        <script type="text/javascript" src="scripts.js"></script>
+    </body>
 </html>
