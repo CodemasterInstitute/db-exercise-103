@@ -2,6 +2,8 @@
 function validateForm() {
 	var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	var dateRegex = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+    
+    clearErrors();
 
 	var title = document.querySelector('#title').value;
 	var description = document.querySelector('#description').value;
@@ -14,63 +16,76 @@ function validateForm() {
 
 	// Required
 	if (!validateRequiredField(title)) {
-		alert('Title required!');
+		//alert('Title required!');
+        applyErrorState('title', 'Title required!');
 		return false;
 	}
 	if (!validateRequiredField(price)) {
-		alert('Price required!');
+		//alert('Price required!');
+        applyErrorState('price', 'Price required!');
 		return false;
 	}
 	if (!validateRequiredField(isbn)) {
-		alert('ISBN required!');
+		//alert('ISBN required!');
+        applyErrorState('isbn', 'ISBN required!');
 		return false;
 	}
 	if (!validateRequiredField(datePublished)) {
-		alert('Date Published required!');
+		//alert('Date Published required!');
+        applyErrorState('datePublished', 'Date Published required!');
 		return false;
 	}
 	if (!validateRequiredField(genre)) {
-		alert('Genre required!');
+		//alert('Genre required!');
+        applyErrorState('genre', 'Genre required!');
 		return false;
 	}
 	if (!validateRequiredField(authorName)) {
-		alert('Author Name required!');
+		//alert('Author Name required!');
+        applyErrorState('authorName', 'Author Name required!');
 		return false;
 	}
 	if (!validateRequiredField(authorEmail)) {
-		alert('Author Email required!');
+		//alert('Author Email required!');
+        applyErrorState('authorEmail', 'Author Email required!');
 		return false;
 	}
 
 	// Currency range
 	if (!validateCurrencyField(price)) {
-		alert('Price must be between $0 and $199.99');
+		//alert('Price must be between $0 and $199.99');
+        applyErrorState('price', 'Price must be between $0 and $199.99');
 		return false;
 	}
 
 	// Character length
 	if (!validateTextField(title, 3, 200)) {
-		alert('Title must be between 3 and 200 characters');
+		//alert('Title must be between 3 and 200 characters');
+        applyErrorState('title', 'Title must be between 3 and 200 characters');
 		return false;
 	}
 	if (!validateTextField(authorName, 3, 100)) {
-		alert('Author Name must be between 3 and 100 characters');
+		//alert('Author Name must be between 3 and 100 characters');
+        applyErrorState('authorName', 'Author Name must be between 3 and 100 characters');
 		return false;
 	}
 	if (!validateTextField(authorEmail, 3, 100)) {
-		alert('Author Email must be between 3 and 100 characters');
+		//alert('Author Email must be between 3 and 100 characters');
+        applyErrorState('authorEmail', 'Author Email must be between 3 and 100 characters');
 		return false;
 	}
 
 	// Email format
 	if (!validateRegex(authorEmail, emailRegex)) {
-		alert('Author Email must be in a valid email format');
+		//alert('Author Email must be in a valid email format');
+        applyErrorState('authorEmail', 'Author Email must be in a valid email format');
 		return false;
 	}
 
 	// Date format
 	if (!validateRegex(datePublished, dateRegex)) {
-		alert('Date Published must be in a valid date format');
+		//alert('Date Published must be in a valid date format');
+        applyErrorState('datePublished', 'Date Published must be in a valid date format');
 		return false;
 	}
 
@@ -119,4 +134,22 @@ function validateRegex(value, expression) {
     }
 
     return false;
+}
+
+function applyErrorState(fieldId, errorMsg) {
+    var field = document.querySelector('#' + fieldId);
+    
+    var span = document.createElement("span");
+    span.className = "error";
+    span.innerHTML = errorMsg;
+    field.parentElement.appendChild(span);
+}
+
+function clearErrors() {
+    var errorElems = document.querySelectorAll('.error');
+    
+    for (var i = 0; i < errorElems.length; i++) {
+        var errorElem = errorElems[i];
+        errorElem.parentElement.removeChild(errorElem);
+    }
 }
